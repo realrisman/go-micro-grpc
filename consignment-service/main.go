@@ -7,7 +7,7 @@ import (
 	"net"
 	"sync"
 
-	pb "github.com/realrisman/go-micro-grpc/proto/consignment"
+	pb "github.com/realrisman/go-micro-grpc/consignment-service/proto/consignment"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
