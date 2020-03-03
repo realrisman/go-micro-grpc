@@ -2,9 +2,14 @@ package main
 
 import (
 	// import the generated protobuf code
+	"context"
+	"log"
+	"net"
 	"sync"
 
 	pb "github.com/realrisman/go-micro-grpc/proto/consignment"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 const port = ":50051"
@@ -21,7 +26,7 @@ type Repository struct {
 
 // Create a new consignment
 func (repo *Repository) Create(consignment *pb.Consignment) (*pb.Consignment, error) {
-	repo.mu.lock()
+	repo.mu.Lock()
 	updated := append(repo.consignments, consignment)
 	repo.consignments = updated
 	repo.mu.Unlock()
@@ -58,7 +63,7 @@ func main() {
 	// Set-up our gRPC server.
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fataf("failed to listen: %v", err)
+		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
 
