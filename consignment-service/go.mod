@@ -1,4 +1,4 @@
-module github.com/realrisman/go-micro-grpc
+module github.com/realrisman/go-micro-grpc/consignment-service
 
 go 1.14
 
