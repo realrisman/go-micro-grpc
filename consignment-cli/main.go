@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"log"
@@ -15,8 +16,8 @@ const (
 	defaultFilename = "consignment.json"
 )
 
-func parseFile(file string) (*pb.Consigment, error) {
-	var consignment *pb.Consigment
+func parseFile(file string) (*pb.Consignment, error) {
+	var consignment *pb.Consignment
 	data, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil, err
